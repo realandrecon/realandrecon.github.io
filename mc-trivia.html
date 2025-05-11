@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MC Trivia</title>
+    <link rel="stylesheet" href="mc-style.css">
+</head>
+<body>
+    <ol>
+        <li>What are the 4 spin-off games of Minecraft? 
+            <br>
+            <input type="text" id="spin-off-games" placeholder="Enter your answer here">
+            <br>Hint: 2 are still playable, while 2 are kinda lost to history
+        </li>
+        <li>What was the first name for Minecraft?
+            <br>
+            <input type="text" id="first-name-minecraft" placeholder="Enter your answer here">
+        </li>
+        <li>How do you multiply a written book</li>
+        <ul>
+            <li><input type="radio" name="multiply-book" id="multiply-book-1"> You can&#39;t</li>
+            <li><input type="radio" name="multiply-book" id="multiply-book-2"> Put a book and quill next to it (while crafting)</li>
+            <li><input type="radio" name="multiply-book" id="multiply-book-3"> You surround the written book with book and quills</li>
+        </ul>
+        <li><p>What were the materials that were replaced with dyes in 1.14 (4 correct)</p>
+        <ul>
+            <li><input type="checkbox" id="ink-sack"> Ink Sack</li>
+            <li><input type="checkbox" id="cactus-green"> Cactus Green</li>
+            <li><input type="checkbox" id="lapis-lazuli"> Lapis Lazuli</li>
+            <li><input type="checkbox" id="diamonds"> Diamonds</li>
+            <li><input type="checkbox" id="brown-mushroom"> Brown Mushroom</li>
+            <li><input type="checkbox" id="cocoa-beans"> Cocoa Beans</li>
+            <li><input type="checkbox" id="bones"> Bones</li>
+            <li><input type="checkbox" id="dandelion-yellow"> Dandelion Yellow</li>
+            <li><input type="checkbox" id="bone-meal"> Bone Meal</li>
+        </ul>
+        </li>
+        <li>In what version was bamboo added?
+            <br>
+            <input type="text" id="bamboo-version" placeholder="Enter your answer here">
+        </li>
+        <li>What's the other item used in a map's crafting recipe apart from paper?
+            <br>
+            <input type="text" id="map-crafting-item" placeholder="Enter your answer here">
+        </li>
+        <li>Bonus: What is the name of the <strong>datapack</strong> that ItzAndrecon has made?
+            <br>
+            <input type="text" id="datapack-name" placeholder="Enter your answer here">
+        </li>
+        <li>Bonus 2: What is the name of the <strong>resource pack</strong> that ItzAndrecon has made?
+            <br>
+            <input type="text" id="resource-pack-name" placeholder="Enter your answer here">
+        </li>
+        <li>True or False: Select T where the item is real (in any of the editions, in any of the versions) and F where it&#39;s not:
+        <ul>
+            <li>Balloon - 
+                <label class="switch">
+                    <input type="checkbox" id="balloon">
+                    <span class="slider"></span>
+                </label>
+            </li>
+            <li>Flotater - 
+                <label class="switch">
+                    <input type="checkbox" id="flotater">
+                    <span class="slider"></span>
+                </label>
+            </li>
+            <li>Bolt Banner Pattern - 
+                <label class="switch">
+                    <input type="checkbox" id="bolt-banner-pattern">
+                    <span class="slider"></span>
+                </label>
+            </li>
+            <li>Shimmering Key - 
+                <label class="switch">
+                    <input type="checkbox" id="shimmering-key">
+                    <span class="slider"></span>
+                </label>
+            </li>
+            <li>Nether Reactor Core - 
+                <label class="switch">
+                    <input type="checkbox" id="nether-reactor-core">
+                    <span class="slider"></span>
+                </label>
+            </li>
+            <li>Indium Ore - 
+                <label class="switch">
+                    <input type="checkbox" id="indium-ore">
+                    <span class="slider"></span>
+                </label>
+            </li>
+            <li>Hoglin Meat - 
+                <label class="switch">
+                    <input type="checkbox" id="hoglin-meat">
+                    <span class="slider"></span>
+                </label>
+            </li>
+            <li>Studded Armor - 
+                <label class="switch">
+                    <input type="checkbox" id="studded-armor">
+                    <span class="slider"></span>
+                </label>
+            </li>
+            <li>Baked Poisonous Potato - 
+                <label class="switch">
+                    <input type="checkbox" id="baked-poisonous-potato">
+                    <span class="slider"></span>
+                </label>
+            </li>
+        </ul>
+        </li>
+        <li>What ingredient is needed for a Fire Resistance Potion?</li>
+        <ul>
+            <li><input type="radio" name="fire-resistance" id="fire-resistance-1"> Blaze Powder</li>
+            <li><input type="radio" name="fire-resistance" id="fire-resistance-2"> Magma Cream</li>
+            <li><input type="radio" name="fire-resistance" id="fire-resistance-3"> Lava Bucket</li>
+        </ul>
+    </ol>
+    <button onclick="verifyAnswers()">Submit</button>
+    <p id="result"></p>
+    <script src="mc-script.js"></script>
+</body>
+</html>
