@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<title>Revendicare Premiu</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; height: 100%; }
+
+  .screen { display: none; width: 100%; min-height: 100vh; }
+  .screen.active { display: flex; flex-direction: column; }
+
+  #screen-form {
+    background: #c0c0c0;
+    flex: 1;
+    flex-direction: column;
+  }
+  .form-titlebar {
+    background: #000080;
+    color: #ffffff;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    padding: 6px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .titlebar-btns span {
+    background: #c0c0c0;
+    border: 2px outset #ffffff;
+    color: #000;
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    padding: 1px 8px;
+    cursor: pointer;
+    margin-left: 3px;
+  }
+  .form-body {
+    padding: 24px 32px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .form-winner-banner {
+    background: #ffff00;
+    border: 3px solid #ff0000;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 18px;
+    animation: wblink 0.6s step-start infinite;
+  }
+  @keyframes wblink {
+    0%,100% { background: #ffff00; border-color: #ff0000; }
+    50% { background: #ff0000; border-color: #ffff00; }
+  }
+  .form-winner-banner p {
+    font-family: Impact, sans-serif;
+    font-size: 26px;
+    color: #000080;
+    animation: wtext 0.6s step-start infinite;
+  }
+  @keyframes wtext {
+    0%,100% { color: #000080; }
+    50% { color: #ffffff; }
+  }
+  .form-subtitle {
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    color: #000;
+    margin-bottom: 18px;
+    text-align: center;
+    line-height: 1.6;
+  }
+  .form-row { margin-bottom: 12px; }
+  .form-row label {
+    display: block;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    font-weight: bold;
+    color: #000080;
+    margin-bottom: 4px;
+  }
+  .form-row input {
+    width: 100%;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    background: #ffffff;
+    border: 2px inset #888;
+    padding: 6px 8px;
+    color: #000;
+  }
+  .form-row input:focus { outline: 1px dotted #000080; }
+  .form-note {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    color: #555;
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+  .submit-btn {
+    font-family: Impact, sans-serif;
+    font-size: 22px;
+    background: #ff6600;
+    color: #ffff00;
+    border: 4px outset #ffaa44;
+    padding: 12px 0;
+    width: 100%;
+    cursor: pointer;
+    text-shadow: 2px 2px 0 #660000;
+    animation: sblink 0.4s step-start infinite;
+  }
+  @keyframes sblink {
+    0%,100% { background: #ff6600; }
+    50% { background: #cc3300; }
+  }
+
+  #screen-winner {
+    background: #000080;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 40px 32px;
+    text-align: center;
+  }
+  .winner-stars {
+    color: #ffff00;
+    font-size: 28px;
+    letter-spacing: 8px;
+    animation: wsblink 0.4s step-start infinite;
+    margin-bottom: 14px;
+  }
+  @keyframes wsblink { 50% { opacity: 0; } }
+  .winner-title {
+    font-family: Impact, sans-serif;
+    font-size: 48px;
+    color: #ffff00;
+    text-shadow: 3px 3px 0 #ff0000;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    animation: wtcolor 0.3s step-start infinite;
+  }
+  @keyframes wtcolor {
+    0%  { color: #ffff00; }
+    33% { color: #ff6600; }
+    66% { color: #ffffff; }
+  }
+  .winner-box {
+    background: #c0c0c0;
+    border: 4px outset #ffffff;
+    padding: 16px 20px;
+    margin: 14px 0;
+    text-align: left;
+    max-width: 500px;
+    width: 100%;
+  }
+  .winner-box p {
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    color: #000;
+    line-height: 2;
+  }
+  .winner-box p span { color: #000080; font-weight: bold; }
+  .winner-confirm-btn {
+    font-family: Impact, sans-serif;
+    font-size: 24px;
+    background: #22aa22;
+    color: #ffffff;
+    border: 4px outset #55ff55;
+    padding: 14px 48px;
+    cursor: pointer;
+    text-shadow: 2px 2px 0 #004400;
+    margin-top: 14px;
+    animation: gblink 0.5s step-start infinite;
+  }
+  @keyframes gblink {
+    0%,100% { background: #22aa22; }
+    50% { background: #118811; }
+  }
+  .fine-print {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    color: #aaaaff;
+    margin-top: 14px;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<div id="screen-form" class="screen active">
+  <div class="form-titlebar">
+    <span>🏆 Revendicare Premiu — Pasul 1 din 2</span>
+    <div class="titlebar-btns">
+      <span>_</span><span>□</span><span>✕</span>
+    </div>
+  </div>
+  <div class="form-body">
+    <div class="form-winner-banner">
+      <p>FELICITARI! AI CASTIGAT!!!</p>
+    </div>
+    <p class="form-subtitle">
+      Pentru a-ti REZERVA LOCUL la evenimentul exclusivist,<br>
+      completeaza datele de mai jos <b>ACUM</b> (oferta expira in curand!!!).
+    </p>
+    <div class="form-row">
+      <label>► NUME COMPLET *</label>
+      <input type="text" id="inp-name" placeholder="ex: Ion Popescu" />
+    </div>
+    <div class="form-row">
+      <label>► NUMAR DE TELEFON *</label>
+      <input type="text" id="inp-phone" placeholder="07xx xxx xxx" />
+    </div>
+    <div class="form-row">
+      <label>► ADRESA DE EMAIL *</label>
+      <input type="text" id="inp-email" placeholder="email@exemplu.com" />
+    </div>
+    <div class="form-row">
+      <label>► GRUPA DE SANGE (optional dar recomandat)</label>
+      <input type="text" id="inp-blood" placeholder="ex: A+" />
+    </div>
+    <p class="form-note">
+      * Prin completarea acestui formular esti de acord cu Termenii si Conditiile (42 pagini),
+      Politica de Confidentialitate, si accepti sa primesti 847 de emailuri promotionale pe zi.
+      Datele tale NU vor fi vandute. Poate.
+    </p>
+    <button class="submit-btn" onclick="showWinner()">CONTINUA ►► REVENDICA PREMIUL</button>
+  </div>
+</div>
+
+<div id="screen-winner" class="screen">
+  <div class="winner-stars">★ ★ ★ ★ ★ ★ ★ ★</div>
+  <p class="winner-title">LOC REZERVAT<br>CU SUCCES!!!</p>
+  <div class="winner-box">
+    <p>
+      <span>► Eveniment:</span> Ziua lui Olteanu Andrei Marian Ionut<br>
+      <span>► Data:</span> 13 Iunie 2026<br>
+      <span>► Locatie:</span> McDonald's<br>
+      <span>► Statut:</span> CONFIRMAT ✔<br>
+      <span>► Locuri ramase:</span> <span style="color:#ff0000;">6</span>
+    </p>
+  </div>
+  <p id="winner-msg" style="font-family:'Courier New',monospace;font-size:14px;color:#ffff00;margin-bottom:10px;">
+    Vei fi contactat in curand pe toate canalele disponibile.<br>
+    Inclusiv prin posta. Si prin vecini.
+  </p>
+  <button class="winner-confirm-btn">OK ✔</button>
+  <p class="fine-print">
+    © 2011 CuSigurantaNuEScam.ro | Securizat SSL 128-bit | IP-ul tau: 192.168.1.1<br>
+    Acest site foloseste 0 cookies. In schimb foloseste biscuiti.
+  </p>
+</div>
+
+<script>
+  function showWinner() {
+    var name = document.getElementById('inp-name').value;
+    if (name) {
+      document.getElementById('winner-msg').innerHTML =
+        'Vei fi contactat in curand, <b style="color:#ffff00">' + name + '</b>,<br>pe toate canalele disponibile.<br>Inclusiv prin posta. Si prin vecini.';
+    }
+    document.getElementById('screen-form').classList.remove('active');
+    document.getElementById('screen-winner').classList.add('active');
+  }
+</script>
+
+</body>
+</html>
